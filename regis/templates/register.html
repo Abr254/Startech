@@ -1,0 +1,91 @@
+<!-- regis/templates/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .registration-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            width: 400px;
+            transition: all 0.3s ease;
+        }
+        .registration-container:hover {
+            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 1rem;
+            width: 80%;
+            border-radius: 10px;
+        }
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        button {
+            border-radius: 5px;
+            background-color: #007bff;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .register-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .register-link a {
+            color: #007bff;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1730704298/What_is_a_neutron_star_pillars_x1yuru.jpg" alt="Startech Logo" class="logo">
+        <h2>Startech</h2>
+        <h3> Signup </h3>
+        <form method="post" action="{% url 'register' %}" id="registration-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password1" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <p class="register-link">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffebee; /* Light gray background */
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #d81b60; /* Dark pink color */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none; /* Remove default list styling */
+            padding: 0;
+        }
+        li {
+            background: #ffffff; /* White background for list items */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        strong {
+            color: #d5006d; /* Strong pink color */
+            display: block; /* Make title a block to occupy full width */
+            margin-bottom: 5px; /* Space below title */
+        }
+        a {
+            color: #007bff; /* Bootstrap primary link color */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Ensure block-level behavior for ellipsis */
+            max-width: 200px; /* Limit the width of the link */
+            overflow: hidden; /* Hide overflow */
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+            white-space: nowrap; /* Prevent line breaks in link */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        .description {
+            margin-top: 5px; /* Space above description */
+            color: #555; /* Gray color for description */
+        }
+    </style>
+</head>
+<body>
+    <h2>Files</h2>
+    <div class="container">
+        <ul>
+            {% for document in documents %}
+                <li>
+                    <strong>{{ document.title }}</strong>
+                    <a href="{% url 'download_file' document.id %}">{{ document.file.name }}</a>
+                    {% if document.description %}
+                        <p class="description">{{ document.description }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

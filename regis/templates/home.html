@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Startech</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .home-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            text-align: center;
+            width: 400px;
+        }
+        h1 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        p {
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            border-radius: 5px;
+        }
+        .welcome-image {
+            width: 100%; /* Make the image responsive */
+            border-radius: 10px; /* Match container's border radius */
+            margin-bottom: 1rem; /* Spacing below the image */
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1730712897/65dd33d49a346d9be0b075ea_65dd12fa299e167d189f00f7-fed9c2116dfcf56370cea3063f4e88fa_ev2ok3.jpg" alt="Startech Welcome Image" class="welcome-image">
+        <h1>Welcome to Startech</h1>
+        <p>
+            Discover a world of technology and innovation. Join our community to share insights, learn from others, and connect over your passion for tech.
+        </p>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    </div>
+</body>
+</html>
