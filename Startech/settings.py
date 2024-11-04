@@ -24,7 +24,7 @@ LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout
 SECRET_KEY = 'django-insecure-^lg-&fk-a+4=@!72e4h4(=amzd&0vyletl(rf95+^&dso1x62c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['startech-m2z9.onrender.com']
 # settings.py
@@ -136,10 +136,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+import os
 STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -18,9 +18,25 @@ def group_chat(request):
         if form.is_valid():
             message = form.save(commit=False)
             message.user = request.user
+
             if message.media:
-                upload_result = cloudinary.uploader.upload(message.media)
+                uploaded_file = request.FILES['media']  # Access the uploaded file directly
+
+                # Check the media type before uploading
+                if uploaded_file.content_type.startswith('video/'):
+                    upload_result = cloudinary.uploader.upload(uploaded_file, resource_type='video')
+                elif uploaded_file.content_type.startswith('image/'):
+                    upload_result = cloudinary.uploader.upload(uploaded_file, resource_type='image')
+                else:
+                    return render(request, 'group_chat.html', {
+                        'group': group,
+                        'messages': messages,
+                        'form': form,
+                        'error': 'Unsupported file type. Please upload an image or video.'
+                    })
+
                 message.media = upload_result['secure_url']  # Save the Cloudinary URL
+
             message.group = group
             message.save()
             return redirect('group_chat')

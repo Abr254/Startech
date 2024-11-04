@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+import mimetypes
 
 class Group(models.Model):
     name = models.CharField(max_length=255, default="Startech Social", unique=True)
@@ -17,4 +19,16 @@ class Message(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.content[:20]}"
-# Create your models here.
+
+    def clean(self):
+        # Validate media type
+        if self.media:
+            mime_type, _ = mimetypes.guess_type(self.media.name)
+            allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/x-msvideo']
+
+            if mime_type not in allowed_types:
+                raise ValidationError(f"Unsupported file type: {mime_type}. Only JPEG, PNG, GIF, MP4, and AVI are allowed.")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()  # Validate the model before saving
+        super().save(*args, **kwargs)
