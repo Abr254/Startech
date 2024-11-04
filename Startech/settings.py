@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^lg-&fk-a+4=@!72e4h4(=amzd&0vyletl(rf95+^&dso1x62c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Startech.onrender.com']
+ALLOWED_HOSTS = ['Startech-m2z9.onrender.com']
 # settings.py
 import cloudinary
 import cloudinary.uploader
