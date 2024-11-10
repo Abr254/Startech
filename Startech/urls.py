@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('regis.urls')),  # Use '' to make regis the root URL
     path('video/', include('video.urls')),
     path('files/', include('files.urls')),
-    path('social/', include('social.urls')),  # Adjust to your app's name
+    path('social/', include('social.urls')),
+    path('pdf/', include('pdf.urls')), # Adjust to your app's name
 ]

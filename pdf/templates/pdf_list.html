@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Posts</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #ffe6f1; /* Light pink background */
+            font-family: Arial, sans-serif;
+            margin-top: 80px; /* Adding space to avoid content overlap with fixed icons */
+        }
+
+        h1 {
+            color: #d81b60;  /* Dark pink color for title */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .post {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post h3 {
+            color: #d81b60;
+        }
+
+        .post p {
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .code-sample {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .media {
+            margin-top: 20px;
+        }
+
+        .media img, .media video {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .media video {
+            max-height: 400px;
+        }
+
+        /* Icon container styling for fixed position */
+        .icon-container {
+            background-color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 2px solid #d81b60;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the icons stay on top of other content */
+        }
+
+        .icon-link {
+            color: #d81b60; /* Dark pink text */
+            font-size: 18px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .icon-link:hover {
+            color: #c13572; /* Slightly darker pink for hover effect */
+        }
+
+        .icon-link i {
+            margin-right: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Icon Navigation Links at the Top (Fixed) -->
+    <div class="icon-container">
+
+        <!-- Link to Create Post page -->
+        <a href="{% url 'create_post' %}" class="icon-link">
+            <i class="fas fa-plus"></i> Create Post
+        </a>
+
+        <!-- Link to Recovery Images -->
+        <a href="{% url 'list_files' %}" class="icon-link">
+            <i class="fas fa-list"></i> ROMs/TWRPs
+        </a>
+
+        <!-- Link to Video Tutorials -->
+        <a href="{% url 'video_list' %}" class="icon-link">
+            <i class="fas fa-video"></i> Video
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <h3>{{ post.user.username }} posted:</h3>
+                    <p>{{ post.content }}</p>
+
+                    {% if post.code_sample %}
+                        <div class="code-sample">
+                            <h5>Code Sample:</h5>
+                            <pre>{{ post.code_sample.code }}</pre>
+                        </div>
+                    {% endif %}
+
+                    {% if post.media.all %}
+                        <div class="media">
+                            {% for media in post.media.all %}
+                                {% if media.media_type == 'image' %}
+                                    <img src="{{ media.file.url }}" alt="Image" class="img-fluid">
+                                {% elif media.media_type == 'video' %}
+                                    <video controls>
+                                        <source src="{{ media.file.url }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No posts available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Optional Bootstrap JS (for functionality like modals, tooltips, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

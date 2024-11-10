@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Post</title>
+    
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Link to FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Custom CSS for light pink background and other styling -->
+    <style>
+        body {
+            background-color: #f8d7da; /* Light pink background */
+        }
+        .container {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h2 {
+            color: #d63384; /* Darker pink for the title */
+            font-family: 'Arial', sans-serif;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #d63384; /* Dark pink for labels */
+        }
+        .btn-primary {
+            background-color: #d63384; /* Dark pink button */
+            border-color: #d63384;
+        }
+        .btn-primary:hover {
+            background-color: #c13572; /* Slightly darker pink for hover effect */
+            border-color: #c13572;
+        }
+        .btn-secondary {
+            background-color: #f1f1f1; /* Light gray for back button */
+            border-color: #ddd;
+        }
+        .btn-secondary:hover {
+            background-color: #e2e2e2; /* Slightly darker gray for hover effect */
+            border-color: #ccc;
+        }
+        hr {
+            border-top: 1px solid #d63384; /* Dark pink horizontal rule */
+        }
+
+        /* Icon container styling */
+        .icon-container {
+            background-color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 2px solid #d63384;
+            margin-bottom: 20px;
+        }
+
+        .icon-link {
+            color: #d63384; /* Dark pink text */
+            font-size: 18px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .icon-link:hover {
+            color: #c13572; /* Slightly darker pink for hover effect */
+        }
+
+        .icon-link i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Icon Navigation Links at the Top -->
+    <div class="icon-container">
+        <!-- Link to Home page -->
+        <a href="{% url 'home' %}" class="icon-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+
+        <!-- Link to Recovery Images -->
+        <a href="{% url 'list_files' %}" class="icon-link">
+            <i class="fas fa-list"></i> ROMs/TWRP s 
+        </a>
+
+        <!-- Link to Video Tutorials -->
+        <a href="{% url 'video_list' %}" class="icon-link">
+            <i class="fas fa-video"></i> video 
+        </a>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Upload a New Post</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Post content field -->
+            <div class="form-group">
+                <label for="content">Post Content</label>
+                {{ post_form.content }}
+                {% if post_form.content.errors %}
+                    <ul class="text-danger">
+                        {% for error in post_form.content.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <!-- Media upload field -->
+            <div class="form-group">
+                <label for="media">Upload Media (optional)</label>
+                {{ media_form.as_p }}
+            </div>
+
+            <!-- Code sample field -->
+            <div class="form-group">
+                <label for="code_sample">Add Code Sample (optional)</label>
+                {{ code_form.as_p }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <hr>
+        <p class="text-center">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+        </p>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

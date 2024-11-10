@@ -6,8 +6,12 @@
     <title>Video List</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
-         body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #ffebee;
             margin: 0;
@@ -15,11 +19,13 @@
             flex-direction: column;
             height: 100vh;
         }
+
         h1 {
             color: #d81b60;
             text-align: center;
             margin: 20px 0;
         }
+
         .video-item {
             margin: 15px;
             border: 1px solid #ccc;
@@ -28,20 +34,77 @@
             background-color: white;
             transition: transform 0.2s;
         }
+
         .video-item:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .video-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
+
+        /* Icon container styling for fixed position */
+        .icon-container {
+            background-color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 2px solid #d81b60;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the icons stay on top of other content */
+        }
+
+        .icon-link {
+            color: #d81b60; /* Dark pink text */
+            font-size: 18px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .icon-link:hover {
+            color: #c13572; /* Slightly darker pink for hover effect */
+        }
+
+        .icon-link i {
+            margin-right: 8px;
+        }
+
+        /* Adjust container to not overlap with the fixed icons */
+        .container {
+            margin-top: 80px; /* Give space for fixed navbar */
+        }
     </style>
 </head>
 <body>
+    <!-- Icon Navigation Links at the Top (Fixed) -->
+    <div class="icon-container">
+        <!-- Link to Home page -->
+        <a href="{% url 'home' %}" class="icon-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+
+        <!-- Link to Create Post page -->
+        <a href="{% url 'create_post' %}" class="icon-link">
+            <i class="fas fa-plus"></i> Create Post
+        </a>
+
+        <!-- Link to Recovery Images -->
+        <a href="{% url 'list_files' %}" class="icon-link">
+            <i class="fas fa-list"></i> ROMs/TWRPs
+        </a>
+
+        <!-- Link to Video Tutorials -->
+      
+    </div>
+
     <div class="container">
-        <h1 class="my-4 text-center"> Startech web tutorials </h1>
+        <h1 class="my-4">Startech Web Tutorials</h1>
         <div class="video-container">
             {% for video in videos %}
                 <div class="video-item col-md-4">
@@ -56,8 +119,6 @@
                     <p>No videos available.</p>
                 </div>
             {% endfor %}
-        </div>
-        <div class="text-center my-4">
         </div>
     </div>
 

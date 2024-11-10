@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'regis',
     'files',
     'social',
+    'pdf',
 ]
 
 MIDDLEWARE = [
@@ -89,13 +90,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Startech.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  # Replace with your Supabase database name
+       'NAME': 'postgres',  # Replace with your Supabase database name
         'USER': 'postgres.kfwetbckocjegzcmekdk',  # Replace with your Supabase database user
         'PASSWORD':'M*#2458abr4',  # Replace with your Supabase database password
         'HOST': 'aws-0-us-east-2.pooler.supabase.com',  # Replace with your Supabase project URL
