@@ -24,8 +24,7 @@ LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout
 SECRET_KEY = 'django-insecure-^lg-&fk-a+4=@!72e4h4(=amzd&0vyletl(rf95+^&dso1x62c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = False 
 ALLOWED_HOSTS = ['startech-m2z9.onrender.com']
 # settings.py
 import cloudinary
@@ -93,18 +92,21 @@ WSGI_APPLICATION = 'Startech.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
-    'default': {
+   'default': {
         'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'postgres',  # Replace with your Supabase database name
-        'USER': 'postgres.kfwetbckocjegzcmekdk',  # Replace with your Supabase database user
-        'PASSWORD':'M*#2458abr4',  # Replace with your Supabase database password
+       'USER': 'postgres.kfwetbckocjegzcmekdk',  # Replace with your Supabase database user
+       'PASSWORD':'M*#2458abr4',  # Replace with your Supabase database password
         'HOST': 'aws-0-us-east-2.pooler.supabase.com',  # Replace with your Supabase project URL
         'PORT': '6543',  # Default PostgreSQL port
-    }
+     }
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

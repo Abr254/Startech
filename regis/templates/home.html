@@ -3,53 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Startech</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tech & Development Hub - Home</title>
     <style>
-        body {
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Arial', sans-serif;
-        }
-        .home-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            padding: 2rem;
-            text-align: center;
-            width: 400px;
-        }
-        h1 {
-            margin-bottom: 1rem;
+            line-height: 1.6;
+            background-color: #f7f7f7;
             color: #333;
         }
-        p {
+
+        header {
+            background-color: #2C3E50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            color: #18BC9C;
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px 10%;
+        }
+
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+            color: #2C3E50;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        section p {
+            font-size: 1.1rem;
             color: #555;
-            margin-bottom: 2rem;
+            margin-bottom: 15px;
         }
-        .btn {
+
+        section ul {
+            list-style-type: square;
+            padding-left: 20px;
+            font-size: 1rem;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #18BC9C;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2C3E50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .cta-btn {
+            background-color: #18BC9C;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
             border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
         }
-        .welcome-image {
-            width: 100%; /* Make the image responsive */
-            border-radius: 10px; /* Match container's border radius */
-            margin-bottom: 1rem; /* Spacing below the image */
+
+        .cta-btn:hover {
+            background-color: #1ABC9C;
         }
     </style>
 </head>
 <body>
-    <div class="home-container">
-        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1730712897/65dd33d49a346d9be0b075ea_65dd12fa299e167d189f00f7-fed9c2116dfcf56370cea3063f4e88fa_ev2ok3.jpg" alt="Startech Welcome Image" class="welcome-image">
+
+    <header>
         <h1>Welcome to Startech</h1>
-        <p>
-            Discover a world of technology and innovation. Join our community to share insights, learn from others, and connect over your passion for tech.
-        </p>
-        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-    </div>
+        <p>Your one-stop destination for the latest in technology, web development, deep learning, and data analysis.</p>
+        <nav>
+            <ul>
+                <li><a href="#webdev">Web Development</a></li>
+                <li><a href="#deep-learning">Deep Learning</a></li>
+                <li><a href="#data-analysis">Data Analysis</a></li>
+                <li><a href="#tech">Tech Trends</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="webdev">
+            <h2>Web Development</h2>
+            <p>Web development is the backbone of the modern digital world. Whether you're building a personal blog or a large-scale enterprise application, the skills involved in web development are essential for anyone looking to create online experiences.</p>
+            <p>From front-end design to back-end logic, web developers use a variety of languages and frameworks to craft responsive, engaging, and functional websites.</p>
+            <ul>
+                <li><strong>Front-End Development:</strong> HTML5, CSS3, JavaScript, React, Vue, Angular</li>
+                <li><strong>Back-End Development:</strong> Node.js, Python (Django, Flask), Ruby on Rails</li>
+                <li><strong>Full-Stack Development:</strong> Combining both front-end and back-end skills to create dynamic, scalable web applications.</li>
+            </ul>
+            <a href="{% url 'register' %}" class="cta-btn">Get Started in Web Development</a>
+        </section>
+
+        <section id="deep-learning">
+            <h2>Deep Learning</h2>
+            <p>Deep learning is an advanced subset of machine learning, which uses neural networks with many layers to simulate the workings of the human brain. It's a field at the forefront of artificial intelligence (AI) and is responsible for breakthroughs in image recognition, speech processing, autonomous driving, and much more.</p>
+            <p>Deep learning models, powered by vast amounts of data and computational power, continue to evolve and push the boundaries of what’s possible in the world of AI.</p>
+            <ul>
+                <li><strong>Convolutional Neural Networks (CNNs):</strong> Used for image recognition and processing tasks.</li>
+                <li><strong>Recurrent Neural Networks (RNNs):</strong> Ideal for sequence data like time series and natural language processing.</li>
+                <li><strong>Generative Adversarial Networks (GANs):</strong> Used for generating realistic images, videos, and more.</li>
+            </ul>
+            <a href="{% url 'register' %}" class="cta-btn">Get Started in deep-learning</a>
+        </section>
+
+        <section id="data-analysis">
+            <h2>Data Analysis</h2>
+            <p>Data analysis is essential in helping organizations understand trends, make informed decisions, and optimize performance. By analyzing large datasets, data scientists and analysts uncover insights that drive strategies and innovations.</p>
+            <p>From exploratory data analysis to predictive analytics, the data analysis process involves a combination of statistical techniques and powerful tools to reveal patterns and forecasts.</p>
+            <ul>
+                <li><strong>Data Cleaning & Preprocessing:</strong> Ensuring data is accurate, consistent, and ready for analysis.</li>
+                <li><strong>Data Visualization:</strong> Tools like Tableau, Power BI, and libraries like Matplotlib, Seaborn to represent data visually.</li>
+                <li><strong>Predictive Modeling:</strong> Building models to predict future trends based on historical data.</li>
+            </ul>
+            <a href="{% url 'register' %}" class="cta-btn">Get Started in data science</a>
+        </section>
+
+        <section id="tech">
+            <h2>Technology Trends</h2>
+            <p>The tech world is constantly evolving, with new innovations and breakthroughs happening every day. Staying ahead of the curve is essential for professionals and enthusiasts alike. Here are some of the top tech trends that are shaping the future.</p>
+            <ul>
+                <li><strong>Cloud Computing:</strong> A major shift from traditional IT infrastructure to on-demand services like AWS, Azure, and Google Cloud.</li>
+                <li><strong>Blockchain Technology:</strong> Revolutionizing industries from finance to healthcare with decentralized and secure systems.</li>
+                <li><strong>Quantum Computing:</strong> A game-changer for solving complex problems that traditional computers cannot handle.</li>
+            </ul>
+            <a href="#" class="cta-btn">Stay Updated on Tech Trends</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Startech.org | All rights reserved.</p>
+        <p>Follow us for the latest updates and news on technology and development!</p>
+    </footer>
+
 </body>
 </html>
