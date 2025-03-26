@@ -1,140 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1980342113369240"
-     crossorigin="anonymous"></script>
-    <title>Tech & Development Hub - Home</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech & Development Hub - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+header {
+    background-color: #2C3E50;
+    color: white;
+    padding: 40px;
+    text-align: left;
+    position: relative;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background-color: #f7f7f7;
-            color: #333;
-        }
+header .logo {
+    position: absolute;
+    left: 210px;
+    top: 7%;
+    transform: translateY(-50%);
+    width: 70px; /* Adjust size */
+    height: 70px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+}
 
-        header {
-            background-color: #2C3E50;
-            color: white;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
+header .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        header h1 {
-            margin-bottom: 10px;
-            font-size: 3rem;
-            font-weight: 700;
-        }
+/* Section Image Styles */
+.section-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* To maintain image aspect ratio */
+}
 
-        header p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 20px;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f7f7f7;
+      color: #333;
+    }
 
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
+    /* Terminal loader styles */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+    .terminal-loader {
+      border: 0.1em solid #333;
+      background-color: #1a1a1a;
+      color: #0f0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1em;
+      padding: 1.5em 1em;
+      width: 12em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
 
-        nav ul li a:hover {
-            color: #18BC9C;
-            text-decoration: underline;
-        }
+    .terminal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1.5em;
+      background-color: #333;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 0 0.4em;
+      box-sizing: border-box;
+    }
 
-        main {
-            padding: 40px 10%;
-        }
+    .terminal-controls {
+      float: right;
+    }
 
-        section {
-            background-color: white;
-            margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .control {
+      display: inline-block;
+      width: 0.6em;
+      height: 0.6em;
+      margin-left: 0.4em;
+      border-radius: 50%;
+      background-color: #777;
+    }
 
-        section h2 {
-            margin-bottom: 20px;
-            color: #2C3E50;
-            font-size: 2rem;
-            font-weight: 600;
-        }
+    .control.close {
+      background-color: #e33;
+    }
 
-        section p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 15px;
-        }
+    .control.minimize {
+      background-color: #ee0;
+    }
 
-        section ul {
-            list-style-type: square;
-            padding-left: 20px;
-            font-size: 1rem;
-        }
+    .control.maximize {
+      background-color: #0b0;
+    }
 
-        section ul li {
-            margin-bottom: 10px;
-        }
+    .terminal-title {
+      float: left;
+      line-height: 1.5em;
+      color: #eee;
+    }
 
-        .highlight {
-            color: #18BC9C;
-        }
+    .text {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.2em solid green; /* Cursor */
+      animation:
+        typeAndDelete 4s steps(11) infinite,
+        blinkCursor 0.5s step-end infinite alternate;
+      margin-top: 1.5em;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #2C3E50;
-            color: white;
-            position: ;
-            width: 100%;
-            bottom: 0;
-        }
+    @keyframes blinkCursor {
+      50% {
+        border-right-color: transparent;
+      }
+    }
 
-        footer p {
-            font-size: 1rem;
-        }
+    @keyframes typeAndDelete {
+      0%,
+      10% {
+        width: 0;
+      }
+      45%,
+      55% {
+        width: 6.2em;
+      } /* adjust width based on content */
+      90%,
+      100% {
+        width: 0;
+      }
+    }
 
-        .cta-btn {
-            background-color: #18BC9C;
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: inline-block;
-        }
+    /* Rest of the existing styles */
+    header {
+      background-color: #2C3E50;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+    }
 
-        .cta-btn:hover {
-            background-color: #1ABC9C;
-        }
-    </style>
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav ul li a:hover {
+      color: #18BC9C;
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 40px 10%;
+    }
+
+    section {
+      background-color: white;
+      margin-bottom: 30px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+      color: #2C3E50;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    section ul {
+      list-style-type: square;
+      padding-left: 20px;
+      font-size: 1rem;
+    }
+
+    section ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #18BC9C;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2C3E50;
+      color: white;
+      position: ;
+      width: 100%;
+      bottom: 0;
+    }
+
+    footer p {
+      font-size: 1rem;
+    }
+
+    .cta-btn {
+      background-color: #18BC9C;
+      color: white;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      background-color: #1ABC9C;
+    }
+  </style>
 </head>
 <body>
 
+    <!-- Loading Terminal Animation -->
+    <div id="loader">
+        <div class="terminal-loader">
+            <div class="terminal-header">
+                <div class="terminal-title">Status</div>
+                <div class="terminal-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+            </div>
+            <div class="text">Loading...</div>
+        </div>
+    </div>
+
     <header>
+       <div class="logo">
+        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1732392440/ypbdcq3ov9d4g8fj37xu.jpg" alt="Website Logo">
+    </div>
+    
         <h1>Welcome to Startech</h1>
         <p>Your one-stop destination for the latest in technology, web development, deep learning, and data analysis.</p>
         <nav>
@@ -149,7 +308,8 @@
 
     <main>
         <section id="webdev">
-            <h2>Web Development</h2>
+              <h2>Web Development</h2>
+        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987198/ikmlfjuorwdk05hgfnfq.jpg" alt="Web Development" class="section-image">
             <p>Web development is the backbone of the modern digital world. Whether you're building a personal blog or a large-scale enterprise application, the skills involved in web development are essential for anyone looking to create online experiences.</p>
             <p>From front-end design to back-end logic, web developers use a variety of languages and frameworks to craft responsive, engaging, and functional websites.</p>
             <ul>
@@ -159,9 +319,9 @@
             </ul>
             <a href="{% url 'register' %}" class="cta-btn">Get Started in Web Development</a>
         </section>
-
         <section id="deep-learning">
             <h2>Deep Learning</h2>
+              <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987387/bg9arhq6svhi0sotwvtl.jpg" alt="Deep Learning" class="section-image">
             <p>Deep learning is an advanced subset of machine learning, which uses neural networks with many layers to simulate the workings of the human brain. It's a field at the forefront of artificial intelligence (AI) and is responsible for breakthroughs in image recognition, speech processing, autonomous driving, and much more.</p>
             <p>Deep learning models, powered by vast amounts of data and computational power, continue to evolve and push the boundaries of what’s possible in the world of AI.</p>
             <ul>
@@ -169,11 +329,11 @@
                 <li><strong>Recurrent Neural Networks (RNNs):</strong> Ideal for sequence data like time series and natural language processing.</li>
                 <li><strong>Generative Adversarial Networks (GANs):</strong> Used for generating realistic images, videos, and more.</li>
             </ul>
-            <a href="{% url 'register' %}" class="cta-btn">Get Started in deep-learning</a>
+            <a href="{% url 'register' %}" class="cta-btn">Get Started in Deep Learning</a>
         </section>
-
         <section id="data-analysis">
             <h2>Data Analysis</h2>
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987364/t9futglzqym4qedy4vjw.jpg" alt="Data Analysis" class="section-image">
             <p>Data analysis is essential in helping organizations understand trends, make informed decisions, and optimize performance. By analyzing large datasets, data scientists and analysts uncover insights that drive strategies and innovations.</p>
             <p>From exploratory data analysis to predictive analytics, the data analysis process involves a combination of statistical techniques and powerful tools to reveal patterns and forecasts.</p>
             <ul>
@@ -181,11 +341,11 @@
                 <li><strong>Data Visualization:</strong> Tools like Tableau, Power BI, and libraries like Matplotlib, Seaborn to represent data visually.</li>
                 <li><strong>Predictive Modeling:</strong> Building models to predict future trends based on historical data.</li>
             </ul>
-            <a href="{% url 'register' %}" class="cta-btn">Get Started in data science</a>
+            <a href="{% url 'register' %}" class="cta-btn">Get Started in Data Science</a>
         </section>
-
         <section id="tech">
             <h2>Technology Trends</h2>
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987230/xv2zbave5kmzz91tosim.jpg" alt="Tech Trends" class="section-image">
             <p>The tech world is constantly evolving, with new innovations and breakthroughs happening every day. Staying ahead of the curve is essential for professionals and enthusiasts alike. Here are some of the top tech trends that are shaping the future.</p>
             <ul>
                 <li><strong>Cloud Computing:</strong> A major shift from traditional IT infrastructure to on-demand services like AWS, Azure, and Google Cloud.</li>
@@ -201,5 +361,11 @@
         <p>Follow us for the latest updates and news on technology and development!</p>
     </footer>
 
+    <script>
+        // Hide the loader once the page has fully loaded
+        window.addEventListener("load", function () {
+            document.getElementById("loader").style.display = "none";
+        });
+    </script>
 </body>
 </html>
