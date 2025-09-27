@@ -4,312 +4,477 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech & Development Hub - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2C3E50;
+      --secondary: #18BC9C;
+      --accent: #3498DB;
+      --light: #ECF0F1;
+      --dark: #1A252F;
+      --gray: #95A5A6;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --radius: 8px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-header {
-    background-color: #2C3E50;
-    color: white;
-    padding: 40px;
-    text-align: left;
-    position: relative;
-}
 
-header .logo {
-    position: absolute;
-    left: 50%;
-    top: 7%;
-    transform: translateY(-50%);
-    width: 70px; /* Adjust size */
-    height: 70px;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    padding: 15px;
-}
-
-header .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Section Image Styles */
-.section-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    object-fit: cover; /* To maintain image aspect ratio */
-}
-
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      background-color: #f7f7f7;
+      background-color: #f9f9f9;
       color: #333;
     }
 
-    /* Terminal loader styles */
-    #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .terminal-loader {
-      border: 0.1em solid #333;
-      background-color: #1a1a1a;
-      color: #0f0;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 1em;
-      padding: 1.5em 1em;
-      width: 12em;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-      box-sizing: border-box;
-    }
-
-    .terminal-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1.5em;
-      background-color: #333;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      padding: 0 0.4em;
-      box-sizing: border-box;
-    }
-
-    .terminal-controls {
-      float: right;
-    }
-
-    .control {
-      display: inline-block;
-      width: 0.6em;
-      height: 0.6em;
-      margin-left: 0.4em;
-      border-radius: 50%;
-      background-color: #777;
-    }
-
-    .control.close {
-      background-color: #e33;
-    }
-
-    .control.minimize {
-      background-color: #ee0;
-    }
-
-    .control.maximize {
-      background-color: #0b0;
-    }
-
-    .terminal-title {
-      float: left;
-      line-height: 1.5em;
-      color: #eee;
-    }
-
-    .text {
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 0.2em solid green; /* Cursor */
-      animation:
-        typeAndDelete 4s steps(11) infinite,
-        blinkCursor 0.5s step-end infinite alternate;
-      margin-top: 1.5em;
-    }
-
-    @keyframes blinkCursor {
-      50% {
-        border-right-color: transparent;
-      }
-    }
-
-    @keyframes typeAndDelete {
-      0%,
-      10% {
-        width: 0;
-      }
-      45%,
-      55% {
-        width: 6.2em;
-      } /* adjust width based on content */
-      90%,
-      100% {
-        width: 0;
-      }
-    }
-
-    /* Rest of the existing styles */
+    /* Header Styles */
     header {
-      background-color: #2C3E50;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
       color: white;
-      padding: 40px;
+      padding: 80px 20px;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 15px;
+      margin: 0 auto 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     header h1 {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       font-size: 3rem;
       font-weight: 700;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
     }
 
+    /* Navigation */
     nav ul {
       list-style-type: none;
       padding: 0;
-      margin-top: 20px;
-    }
-
-    nav ul li {
-      display: inline;
-      margin: 0 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 1.1rem;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     nav ul li a:hover {
-      color: #18BC9C;
-      text-decoration: underline;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
     }
 
+    /* Icon Grid Section */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .icon-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .icon-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      background: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: var(--secondary);
+      font-size: 2.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .icon-card:hover .icon {
+      background: var(--secondary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .icon-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .icon-card p {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .icon-card .cta-btn {
+      background: var(--secondary);
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .icon-card .cta-btn:hover {
+      background: #15a589;
+    }
+
+    /* Main Content Styles */
     main {
-      padding: 40px 10%;
+      padding: 0 5% 80px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     section {
       background-color: white;
+      margin-bottom: 50px;
+      padding: 50px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 30px;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: var(--secondary);
+      font-size: 3rem;
     }
 
     section h2 {
-      margin-bottom: 20px;
-      color: #2C3E50;
-      font-size: 2rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+      font-size: 2.5rem;
       font-weight: 600;
     }
 
     section p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #555;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      max-width: 800px;
     }
 
     section ul {
-      list-style-type: square;
-      padding-left: 20px;
-      font-size: 1rem;
+      list-style-type: none;
+      padding-left: 0;
+      margin: 25px 0;
+      text-align: left;
+      max-width: 800px;
+      width: 100%;
     }
 
     section ul li {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+      font-size: 1.1rem;
     }
 
-    .highlight {
-      color: #18BC9C;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #2C3E50;
-      color: white;
-      position: ;
-      width: 100%;
-      bottom: 0;
-    }
-
-    footer p {
-      font-size: 1rem;
+    section ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: bold;
     }
 
     .cta-btn {
-      background-color: #18BC9C;
+      background-color: var(--secondary);
       color: white;
-      padding: 15px 25px;
+      padding: 15px 30px;
       text-decoration: none;
       font-size: 1.1rem;
-      border-radius: 5px;
+      border-radius: 4px;
       margin-top: 20px;
       display: inline-block;
+      transition: background-color 0.3s;
+      font-weight: 600;
     }
 
     .cta-btn:hover {
-      background-color: #1ABC9C;
+      background-color: #15a589;
+      transform: translateY(-2px);
+    }
+
+    /* Features Section */
+    .features {
+      background: var(--light);
+      padding: 80px 5%;
+      margin-top: 80px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer Styles */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      color: white;
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 20px;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
+      
+      nav ul li a {
+        padding: 8px 16px;
+        font-size: 1rem;
+      }
+      
+      .icon-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 60px auto;
+      }
+      
+      main {
+        padding: 0 3% 60px;
+      }
+      
+      section {
+        padding: 30px 20px;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-    <!-- Loading Terminal Animation -->
-    <div id="loader">
-        <div class="terminal-loader">
-            <div class="terminal-header">
-                <div class="terminal-title">Status</div>
-                <div class="terminal-controls">
-                    <div class="control close"></div>
-                    <div class="control minimize"></div>
-                    <div class="control maximize"></div>
-                </div>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1732392440/ypbdcq3ov9d4g8fj37xu.jpg" alt="Website Logo">
             </div>
-            <div class="text">Loading...</div>
+            
+            <h1>Welcome to Startech</h1>
+            <p>Your one-stop destination for the latest in technology, web development, deep learning, and data analysis.</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="#webdev"><i class="fas fa-code"></i> Web Development</a></li>
+                    <li><a href="#deep-learning"><i class="fas fa-brain"></i> Deep Learning</a></li>
+                    <li><a href="#data-analysis"><i class="fas fa-chart-bar"></i> Data Analysis</a></li>
+                    <li><a href="#tech"><i class="fas fa-rocket"></i> Tech Trends</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Icon Grid Section -->
+    <div class="icon-grid">
+        <div class="icon-card">
+            <div class="icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Build responsive, engaging websites with modern frameworks and technologies.</p>
+            <a href="#webdev" class="cta-btn">Learn More</a>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Deep Learning</h3>
+            <p>Explore neural networks and AI technologies that power the future.</p>
+            <a href="#deep-learning" class="cta-btn">Learn More</a>
+        </div>
+        
+        <div class="icon-card">
+            <div class="icon">
+                <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3>Data Analysis</h3>
+            <p>Uncover insights and make data-driven decisions with advanced analytics.</p>
+            <a href="#data-analysis" class="cta-btn">Learn More</a>
         </div>
     </div>
 
-    <header>
-       <div class="logo">
-        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1732392440/ypbdcq3ov9d4g8fj37xu.jpg" alt="Website Logo">
-    </div>
-    
-        <h1>Welcome to Startech</h1>
-        <p>Your one-stop destination for the latest in technology, web development, deep learning, and data analysis.</p>
-        <nav>
-            <ul>
-                <li><a href="#webdev">Web Development</a></li>
-                <li><a href="#deep-learning">Deep Learning</a></li>
-                <li><a href="#data-analysis">Data Analysis</a></li>
-                <li><a href="#tech">Tech Trends</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <section id="webdev">
-              <h2>Web Development</h2>
-        <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987198/ikmlfjuorwdk05hgfnfq.jpg" alt="Web Development" class="section-image">
+            <div class="section-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h2>Web Development</h2>
             <p>Web development is the backbone of the modern digital world. Whether you're building a personal blog or a large-scale enterprise application, the skills involved in web development are essential for anyone looking to create online experiences.</p>
             <p>From front-end design to back-end logic, web developers use a variety of languages and frameworks to craft responsive, engaging, and functional websites.</p>
             <ul>
@@ -319,11 +484,14 @@ header .logo img {
             </ul>
             <a href="{% url 'register' %}" class="cta-btn">Get Started in Web Development</a>
         </section>
+        
         <section id="deep-learning">
+            <div class="section-icon">
+                <i class="fas fa-brain"></i>
+            </div>
             <h2>Deep Learning</h2>
-              <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987387/bg9arhq6svhi0sotwvtl.jpg" alt="Deep Learning" class="section-image">
             <p>Deep learning is an advanced subset of machine learning, which uses neural networks with many layers to simulate the workings of the human brain. It's a field at the forefront of artificial intelligence (AI) and is responsible for breakthroughs in image recognition, speech processing, autonomous driving, and much more.</p>
-            <p>Deep learning models, powered by vast amounts of data and computational power, continue to evolve and push the boundaries of what’s possible in the world of AI.</p>
+            <p>Deep learning models, powered by vast amounts of data and computational power, continue to evolve and push the boundaries of what's possible in the world of AI.</p>
             <ul>
                 <li><strong>Convolutional Neural Networks (CNNs):</strong> Used for image recognition and processing tasks.</li>
                 <li><strong>Recurrent Neural Networks (RNNs):</strong> Ideal for sequence data like time series and natural language processing.</li>
@@ -331,9 +499,12 @@ header .logo img {
             </ul>
             <a href="{% url 'register' %}" class="cta-btn">Get Started in Deep Learning</a>
         </section>
+        
         <section id="data-analysis">
+            <div class="section-icon">
+                <i class="fas fa-chart-bar"></i>
+            </div>
             <h2>Data Analysis</h2>
-            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987364/t9futglzqym4qedy4vjw.jpg" alt="Data Analysis" class="section-image">
             <p>Data analysis is essential in helping organizations understand trends, make informed decisions, and optimize performance. By analyzing large datasets, data scientists and analysts uncover insights that drive strategies and innovations.</p>
             <p>From exploratory data analysis to predictive analytics, the data analysis process involves a combination of statistical techniques and powerful tools to reveal patterns and forecasts.</p>
             <ul>
@@ -343,9 +514,12 @@ header .logo img {
             </ul>
             <a href="{% url 'register' %}" class="cta-btn">Get Started in Data Science</a>
         </section>
+        
         <section id="tech">
+            <div class="section-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
             <h2>Technology Trends</h2>
-            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1742987230/xv2zbave5kmzz91tosim.jpg" alt="Tech Trends" class="section-image">
             <p>The tech world is constantly evolving, with new innovations and breakthroughs happening every day. Staying ahead of the curve is essential for professionals and enthusiasts alike. Here are some of the top tech trends that are shaping the future.</p>
             <ul>
                 <li><strong>Cloud Computing:</strong> A major shift from traditional IT infrastructure to on-demand services like AWS, Azure, and Google Cloud.</li>
@@ -356,16 +530,46 @@ header .logo img {
         </section>
     </main>
 
+    <!-- Features Section -->
+    <div class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Expert-Led Courses</h3>
+                <p>Learn from industry professionals with years of experience in their respective fields.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Hands-On Projects</h3>
+                <p>Apply your knowledge with real-world projects that build your portfolio.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Support</h3>
+                <p>Join a vibrant community of learners and experts to accelerate your growth.</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2025 Startech.org | All rights reserved.</p>
         <p>Follow us for the latest updates and news on technology and development!</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
     </footer>
 
-    <script>
-        // Hide the loader once the page has fully loaded
-        window.addEventListener("load", function () {
-            document.getElementById("loader").style.display = "none";
-        });
-    </script>
 </body>
 </html>
