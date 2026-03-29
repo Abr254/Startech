@@ -6,7 +6,10 @@ from .models import Post, Media, CodeSample
 def home(request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request, 'pdf_list.html', {'posts': posts})
-
+def member(request):
+    if request.method == 'POST':
+        pass 
+    return render(request, 'member.html')
 def create_post(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
