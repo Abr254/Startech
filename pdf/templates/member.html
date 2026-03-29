@@ -1,1 +1,141 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            margin: 0;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            
+            justify-content: center;
+            align-items: center;
+            background-color:white;
+            padding: 30px;
+            gap:70px;
+        }
+
+        .icon-link {
+            color: pink;
+            text-decoration: none;
+            font-size:auto;
+        }
+
+        .icon-link i {
+            margin-right: 5px;
+        }
+
+        .icon-link:hover {
+            color: #ffd700;
+        }
+
+        .container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 50px 20px; /* ✅ correct */
+}
+
+        .profile-card {
+    background: white;
+    padding:20px;
+    border-radius:1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width:auto;
+}
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%
+            object-fit: cover;
+        }
+
+        .username {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="{% url 'create_post' %}" class="icon-link">
+            <i class="fas fa-plus"></i> Create Post
+        </a>
+
+        <a href="{% url 'list_files' %}" class="icon-link">
+            <i class="fas fa-list"></i> Docs
+        </a>
+
+        <a href="{% url 'video_list' %}" class="icon-link">
+            <i class="fas fa-video"></i> Tutorials
+        </a>
+
+        <a href="{% url 'home' %}" class="icon-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+
+    <!-- PROFILE CARDS -->
+    <div class="container">
+        <div class="profile-card">
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1774782807/IMG_20260311_110303_244_znjqdx.jpg" alt="Profile Picture">
+            <div class="username">Abr254</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1774784065/IMG_20260329_143249_2_wvbsvm.jpg" alt="Profile Picture">
+            <div class="username">Victoria</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
+            <div class="username">Sam</div>
+        </div>
+          <div class="profile-card">
+            <img src=" https://res.cloudinary.com/ddpphe1uv/image/upload/v1774783208/IMG_20260305_142510_152_zql6v0.jpg" alt="Profile-picture">
+            <div class="username">Jimmy</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1759090661/IMG_20250924_162337_187_xqlhhc.jpg" alt="Profile Picture">
+            <div class="username">Captain</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1744277577/dilowkwx8i8rnriakebg.jpg" alt="Profile Picture">
+            <div class="username">Florence</div>
+        </div>
+          <div class="profile-card">
+            <img src="https://res.cloudinary.com/ddpphe1uv/image/upload/v1774783687/IMG_20260329_142717_648_kfgw37.jpg" alt="Profile Picture">
+            <div class="username">Ivy</div>
+        </div>
+
+        <div class="profile-card">
+            <img src=" https://res.cloudinary.com/ddpphe1uv/image/upload/v1774783358/d90bb1118fc24c1bb429a54393094ad1_ellw9k.jpg" alt="Profile Picture">
+            <div class="username">Elkana</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
+            <div class="username">Jared</div>
+        </div>
+    </div>
+
+</body>
+</html>
